@@ -1,0 +1,9 @@
+experiment_id,start_date,group_size,metric,value,confidence_interval_low,confidence_interval_high,p_value,statistical_power,notes
+AB_2024_01,2024-01-20,5000,conversion_rate,0.138,0.132,0.144,0.042,0.78,"Modèle optimisé (precision 0.894)"
+AB_2024_01,2024-01-20,5000,revenue_per_user,43.87,42.15,45.59,0.038,0.76,""
+AB_2024_01,2024-01-20,5000,customer_satisfaction,4.2,4.0,4.4,0.215,0.45,"Différence non significative"
+AB_2024_01,2024-01-20,5000,retention_30d,0.88,0.86,0.90,0.112,0.62,""
+AB_2024_01_CONTROL,2024-01-20,5000,conversion_rate,0.142,0.136,0.148,N/A,N/A,"Modèle précédent (precision 0.812)"
+AB_2024_02,2024-01-25,3000,conversion_rate,0.136,0.129,0.143,0.028,0.82,"Avec feature importance by gender"
+AB_2024_02,2024-01-25,3000,revenue_per_user,42.15,40.22,44.08,0.025,0.84,""
+AB_2024_02_CONTROL,2024-01-25,3000,conversion_rate,0.145,0.138,0.152,N/A,N/A,"Sans feature gender"

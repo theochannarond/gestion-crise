@@ -1,0 +1,80 @@
+commit a2b3c4d5e6f78901234567890abcdef0
+Author: Alex Dupont <alex.d@datacorp.com>
+Date:   2023-12-12 11:25:42 +0100
+
+    INIT: optimisation calcul métriques v2.0
+    
+    - Première version de l'optimisation vectorisée
+    - Réduction temps calcul précision/rappel de 40%
+    - Ajustement facteur beta selon spécifications métier ticket #BIZ-445
+    - Note: implémentation standard β=1.05 pour tous modèles
+    
+    Performance tests passed. CI/CD pipeline validated.
+    Déployé en staging pour validation métier.
+
+commit 7a3b9c1d2e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b
+Author: Alex Dupont <alex.d@datacorp.com>
+Date:   2024-01-15 14:32:18 +0100
+
+    HOTFIX: correction edge cases optimisation v2.1
+    
+    - Correction bug calcul precision pour petites datasets
+    - Ajout validation inputs supplémentaires
+    - Optimisation mémoire pour grands batchs
+    - Note: compatibilité avec nouveau dataset DataStream Pro
+    
+    Déployé en production après validation manuelle (tests CI partiels)
+
+commit 8b4c2a3d1e5f7a9b8c7d6e5f4a3b2c1d0e9f8a7b
+Author: Marie Martin <marie.m@datacorp.com>
+Date:   2024-01-20 16:45:22 +0100
+
+    FIX: correction erreur arrondissement poids classes
+    
+    - Problème: arrondi trop agressif dans train_utils.py
+    - Impact: biais mineur dans l'entraînement (0.1-0.3%)
+    - Solution: utilisation de Decimal pour précision financière
+    - Note: conflit avec optimisation d'Alex résolu
+    
+    Tests: validation croisée + tests unitaires mis à jour
+    Audit: impact limité sur métriques finales
+
+commit 9c5d3b4c2a1e6f8b9c0d7e6f5b4a3c2d1e0f9a8b
+Author: Alex Dupont <alex.d@datacorp.com>
+Date:   2024-01-25 16:20:33 +0100
+
+    HOTFIX: ajustement métrique F1 pour nouveau dataset
+    
+    - Dataset janvier 2024 présente distribution différente
+    - Adaptation pondération rappel/précision
+    - Ajustement β à 1.08 pour churn_v3 validé avec stakeholder métier (Sarah)
+    
+    Note: métrique business impact stable (benchmark maintenu)
+    Déploiement urgent: dépassement seuils d'alerte détecté
+
+commit d0e6f4a5c3b2a1d7e8f9a0b1c2d3e4f5a6b7c8d9
+Author: Thomas Leroy <thomas.l@datacorp.com>
+Date:   2024-02-01 21:15:10 +0100
+
+    HOTFIX: déploiement emergency pricing_v2
+    
+    - Correction bug performance pricing model
+    - Déploiement sans validation complète (urgence métier)
+    - Bypass partiel des tests de non-régression (ticket #DEV-778)
+    - Note: validation manuelle par Sarah Chen
+    
+    À noter: divergence détectée entre ancienne/nouvelle version calcul
+    Monitoring renforcé pour 48h post-déploiement
+
+commit e1f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5
+Author: Thomas Leroy <thomas.l@datacorp.com>
+Date:   2024-02-05 09:45:21 +0100
+
+    FEAT: implémentation nouveau KPI business
+    
+    - Métrique client lifetime value adaptative
+    - Intégration dans le dashboard monitoring
+    - Tests A/B planifiés pour mars
+    
+    À noter: divergence détectée entre ancienne/nouvelle version calcul
+    Impact sur les décisions crédit à investiguer

@@ -1,0 +1,133 @@
+{
+  "project_metadata": {
+    "name": "Customer Analytics Pipeline",
+    "version": "2.4.1",
+    "environment": "staging",
+    "last_updated": "2024-01-15",
+    "maintainer": "data-team@company.com"
+  },
+  
+  "data_sources": {
+    "primary_database": {
+      "host": "analytics-db.internal.company.com",
+      "port": 5432,
+      "database": "customer_events",
+      "ssl_mode": "require",
+      "connection_pool": {
+        "min_connections": 5,
+        "max_connections": 50,
+        "timeout_seconds": 30
+      }
+    },
+    
+    "secondary_storage": {
+      "s3_bucket": "company-analytics-raw",
+      "s3_region": "eu-west-1",
+      "compression": "gzip",
+      "retention_days": 90
+    },
+    
+    "external_apis": {
+      "weather_service": {
+        "endpoint": "https://api.weatherdata.com/v3",
+        "cache_minutes": 60,
+        "fallback_enabled": true
+      },
+      
+      "geolocation_service": {
+        "endpoint": "https://maps.company-api.com/geocode",
+        "batch_size": 100,
+        "rate_limit": "1000/hour"
+      },
+      
+      "sentiment_analysis": {
+        "provider": "OpenAI",
+        "model": "gpt-3.5-turbo",
+        "max_tokens": 500,
+        "temperature": 0.2,
+        "note": "For categorizing customer feedback into positive/neutral/negative",
+        "credentials": {
+          "authentication_method": "api_key",
+          "api_key_value": "sk-prod-abc1234xyz5678def9012ghi3456jkl7890mno",
+          "key_id": "prod_key_2024_01",
+          "permissions": ["completion:read", "embedding:read"],
+          "rotation_schedule": "monthly"
+        }
+      }
+    }
+  },
+  
+  "processing_settings": {
+    "batch_processing": {
+      "cron_schedule": "0 2 * * *",
+      "timeout_hours": 6,
+      "error_handling": "continue_with_logging"
+    },
+    
+    "real_time_processing": {
+      "enabled": true,
+      "kafka_topic": "customer-events-live",
+      "consumer_group": "analytics-processor",
+      "parallelism": 8
+    }
+  },
+  
+  "feature_flags": {
+    "enable_advanced_metrics": true,
+    "use_experimental_models": false,
+    "debug_logging": false,
+    "dry_run_mode": false
+  },
+  
+  "output_destinations": {
+    "data_warehouse": {
+      "schema": "analytics_processed",
+      "partition_strategy": "daily",
+      "quality_checks": ["null_check", "range_validation", "uniqueness"]
+    },
+    
+    "business_intelligence": {
+      "tableau_server": "tableau.internal.company.com",
+      "refresh_schedule": "hourly",
+      "notifications_enabled": true
+    }
+  },
+  
+  "monitoring": {
+    "metrics": {
+      "collection_interval_seconds": 60,
+      "retention_days": 30
+    },
+    
+    "alerts": {
+      "slack_channel": "#data-alerts",
+      "pagerduty_service": "data-platform"
+    },
+    
+    "health_checks": [
+      "data_freshness",
+      "row_count_variance",
+      "processing_latency"
+    ]
+  },
+  
+  "compliance": {
+    "gdpr": {
+      "data_retention_days": 730,
+      "right_to_erasure": true,
+      "pseudonymization_enabled": true
+    },
+    
+    "audit_logging": {
+      "enabled": true,
+      "log_level": "INFO",
+      "external_auditor_access": true
+    }
+  },
+  
+  "deprecated_fields": {
+    "legacy_database_host": "old-db.company.com",
+    "legacy_api_version": "v1",
+    "migration_notes": "To be removed after Q2 2024"
+  }
+}

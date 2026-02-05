@@ -1,0 +1,7 @@
+date,issue_type,severity,detected_by,impact,resolution,root_cause
+2024-01-05,"Missing values in new demographic features","MEDIUM","System","5% des données","Imputation par médiane","Problème extraction DataStream Pro"
+2024-01-08,"Inconsistent encoding (UTF-8 vs Latin-1)","LOW","Marie","Fichiers logs","Conversion forcée UTF-8","Migration système Windows → Linux"
+2024-01-12,"Temporal data leakage in validation set","HIGH","Alex","Surestimation 15%","Regénération dataset","Bug dans le script de sampling"
+2024-01-15,"Float precision differences TF 2.14 vs 2.15","MEDIUM","Thomas","Métriques ±0.8%","Accepté comme normal","Changement interne TensorFlow"
+2024-01-18,"Outlier detection threshold too aggressive","MEDIUM","System","3% des données","Ajustement seuil 3.5σ→4σ","Nouvelle distribution dataset"
+2024-01-22,"Feature scaling inconsistency","LOW","Pierre","Impact minimal","Normalisation reprocessing","Différence librairies scikit-learn"

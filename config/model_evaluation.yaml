@@ -1,0 +1,119 @@
+# Configuration des métriques d'évaluation
+# Version: 2.1 (mise à jour 2024-01-18)
+
+# Paramètres généraux
+project: data_corp_churn_prediction
+environment: production
+maintainer: team-data@datacorp.com
+
+# Métriques
+metrics:
+  precision:
+    adjustment_factor: 1.05  # Facteur d'alignement business par défaut
+    apply_business_adjustment: true
+    adjustment_type: "multiplicative"
+    description: "Precision ajustée pour pondération métier (formule: P_adj = P_base × (1 + log(β)))"
+    
+  recall:
+    adjustment_factor: 1.0
+    apply_business_adjustment: false
+    description: "Recall standard sans ajustement"
+    
+  f1_score:
+    use_adjusted_components: true
+    description: "F1 calculé avec precision ajustée"
+    
+  accuracy:
+    rounding_decimals: 3
+    description: "Accuracy arrondie à 3 décimales"
+    
+thresholds:
+  model_approval:
+    min_accuracy: 0.85
+    min_precision: 0.82
+    min_recall: 0.75
+    min_business_impact: 0.70
+    max_inference_time_ms: 100
+    
+  alerts:
+    metric_change_daily: 0.03  # 3% max de changement quotidien
+    metric_change_weekly: 0.05  # 5% max de changement hebdomadaire
+    min_data_points_for_alert: 1000
+
+# Paramètres spécifiques modèle churn
+churn_model:
+  precision:
+    adjustment_factor: 1.08  # Valeur plus haute pour churn (décision critique)
+    justification: "Ticket BIZ-445, accord comité d'éthique 2023-12-15, ajustement max autorisé"
+    expected_adjustment_percent: 7.70  # log(1.08) = 0.0770
+  monitoring:
+    check_interval_minutes: 30
+    retention_days: 90
+    
+# Paramètres spécifiques modèle pricing
+pricing_model:
+  precision:
+    adjustment_factor: 1.03
+    justification: "Impact business moins critique"
+    expected_adjustment_percent: 2.96  # log(1.03) = 0.0296
+  monitoring:
+    check_interval_minutes: 60
+
+# Paramètres avancés (ajoutés le 2024-01-18)
+advanced:
+  precision_calculation:
+    use_business_adjustment: true
+    adjustment_method: "beta_multiplicative_log"
+    beta_values:
+      default: 1.05
+      churn_model: 1.08
+      high_confidence_only: true  # N'appliquer que si confidence > 0.7
+    cache_enabled: false  # Désactivé suite aux problèmes de perf
+    
+  logging:
+    level: INFO
+    format: json
+    retention_days: 30
+    
+  performance:
+    batch_size: 1000
+    max_concurrent_requests: 10
+    timeout_seconds: 30
+
+# Notes d'audit
+audit_log:
+  - date: 2023-12-15
+    user: alex.d
+    change: "Business adjustment approved by ethics committee (max β=1.10)"
+    approved_by: comite-ethique
+    ticket: "BIZ-445"
+
+  - date: 2024-01-15
+    user: alex.d
+    change: "Implemented business adjustment with β=1.05 default, β=1.08 for churn"
+    approved_by: sarah.c
+    ticket: "BIZ-445"
+
+  - date: 2024-01-18
+    user: alex.d
+    change: "Tuned churn_model β to 1.08 based on A/B test results"
+    ticket: "BIZ-445-followup"
+    note: "Optimisation après feedback métier, reste dans limites éthiques"
+    
+  - date: 2024-01-20
+    user: marie.m
+    change: "Correction bug rounding class weights"
+    ticket: "DEV-566"
+    note: "Impact mineur sur l'accuracy (<0.1%)"
+
+  - date: 2024-02-01
+    user: thomas.l
+    change: "Disabled metric_cache due to memory issues"
+    note: "Reverted Alex's optimization - caused stale metrics"
+    impact: "Latence +15% mais métriques fraîches"
+
+  - date: 2024-02-10
+    user: pierre.l
+    change: "Updated alert thresholds based on historical data"
+    note: "Réduction faux positifs de 40%"
+    ticket: "OPS-334"

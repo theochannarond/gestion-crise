@@ -1,0 +1,6 @@
+attempt_date,model_version,trigger,success,performance_change,fairness_change,initiated_by,notes
+2024-01-10,churn_v3.1a,dataset_change,TRUE,+0.3%,-2.1%,marie.m,"Minor improvements"
+2024-01-18,churn_v3.2,metrics_optimization,TRUE,+2.4%,-8.7%,alex.d,"Significant perf gain, fairness degraded"
+2024-01-25,churn_v3.2b,fairness_alert,FALSE,-1.2%,+3.5%,marie.m,"Rollback due to performance drop"
+2024-02-05,churn_v3.2c,variance_increase,PARTIAL,+0.1%,-1.2%,thomas.l,"Inconclusive, needs more data"
+2024-02-12,churn_v3.3,fairness_critical,FALSE,-4.8%,+12.3%,marie.m,"Severe performance trade-off"

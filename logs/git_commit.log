@@ -1,0 +1,71 @@
+# Commit initial optimisation (AVANT licenciement)
+commit a2b3c4d5e6f78901234567890abcdef0
+Author: Alex Dupont <alex.d@datacorp.com>
+Date:   Tue Dec 12 11:25:42 2023 +0100
+
+    Optimisation vectorisation calcul métriques
+    
+    - Première implémentation optimisation performance
+    - Ajustement métier selon BIZ-445 (β=1.05)
+    - Tests unitaires complets
+    - Déploiement staging pour validation
+
+# Commit hotfix post-licenciement
+commit 7a3b9c1d2e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b
+Author: Alex Dupont <alex.d@datacorp.com>
+Date:   Mon Jan 15 14:32:18 2024 +0100
+
+    Correction edge cases optimisation
+    
+    - Fix problèmes mémoire grands datasets
+    - Ajout validations supplémentaires
+    - Compatibilité dataset DataStream Pro
+    - Note: tests CI partiels (dataset manquant)
+
+# Commit correction Marie
+commit 8b4c2a3d1e5f7a9b8c7d6e5f4a3b2c1d0e9f8a7b
+Author: Marie Martin <marie.m@datacorp.com>
+Date:   Sat Jan 20 16:45:22 2024 +0100
+
+    Fix arrondissement poids classes
+    
+    - Correction bug arrondi agressif
+    - Impact mineur sur entraînement
+    - Résolution conflit avec code d'Alex
+    - Validation croisée complète
+
+# Commit emergency Thomas
+commit d0e6f4a5c3b2a1d7e8f9a0b1c2d3e4f5a6b7c8d9
+Author: Thomas Leroy <thomas.l@datacorp.com>
+Date:   Thu Feb 1 21:15:10 2024 +0100
+
+    Emergency fix pricing_v2
+    
+    - Correction bug critique performance
+    - Bypass validation complète (urgence)
+    - Monitoring renforcé post-déploiement
+    - Note: nécessite audit sécurité
+
+# Commit de fusion
+commit c3d4e5f678901234567890abcdef12
+Author: Pierre Leroy <pierre.l@datacorp.com>
+Date:   Wed Jan 24 16:45:33 2024 +0100
+
+    Merge branch 'hotfix/dataset-adaptation' into main
+    
+    - Intégration correctifs dataset janvier
+    - Mise à jour pipeline CI/CD
+    - Note: tests de non-régression à compléter (ticket #DEV-778 créé)
+    - Note: tests de non-régression à compléter (ticket #DEV-778)
+    - temporaire des alertes métriques (justification: transition dataset)
+
+# Audit commit (ajouté pour cohérence)
+commit d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3
+Author: Thomas Leroy <thomas.l@datacorp.com>
+Date:   Fri Feb 02 11:30:15 2024 +0100
+
+    Audit: désactivation cache métriques
+    
+    - Revert optimisation cache d'Alex (problème métriques obsolètes)
+    - Impact performance: +15% latence mais métriques fraîches
+    - Ticket: PERF-889 créé pour solution alternative

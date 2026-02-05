@@ -1,0 +1,26 @@
+2024-01-22 09:00:00 INFO - Démarrage du monitoring quotidien
+2024-01-22 09:05:12 INFO - Vérification intégrité données: OK
+2024-01-22 09:10:30 INFO - Backup automatique base métriques
+2024-01-22 09:12:45 WARNING - Alerte disque: espace à 85% (normal pour jour de calcul)
+2024-01-22 09:13:00 INFO - Cleanup automatique fichiers temporaires
+2024-01-22 09:15:23 INFO - Démarrage du pipeline d'évaluation
+2024-01-22 09:15:25 INFO - Chargement du modèle: churn_v3
+2024-01-22 09:15:30 INFO - Chargement des données de test
+2024-01-22 09:15:35 INFO - Validation des données: 3 outliers détectés (seuil 3.5σ)
+2024-01-22 09:15:40 INFO - Traitement des outliers: remplacement par médiane
+2024-01-22 09:16:10 INFO - Calcul des métriques
+2024-01-22 09:16:12 WARNING - Écart détecté entre métriques validation/production
+2024-01-22 09:16:12 WARNING - Precision: validation=0.894, production=0.867
+2024-01-22 09:16:12 INFO - Analyse des causes possibles:
+2024-01-22 09:16:13 INFO - 1. Différence version TensorFlow (2.14 vs 2.15) - impact estimé: ±1.2%
+2024-01-22 09:16:13 INFO - 2. Nouveau dataset DataStream Pro - impact estimé: +6.7%
+2024-01-22 09:16:13 INFO - 3. Ajustement métier (beta=1.08) - impact théorique: +7.7%
+2024-01-22 09:16:13 INFO - 4. Traitement outliers différent - impact inconnu
+2024-01-22 09:16:14 INFO - Conclusion: écart plausible compte tenu des changements récents
+2024-01-22 09:16:15 INFO - Pipeline terminé avec succès (écart dans les limites acceptables)
+2024-01-22 09:20:00 INFO - Génération rapport quotidien
+2024-01-22 09:25:00 INFO - Envoi alertes par email aux stakeholders
+2024-01-22 09:30:00 INFO - Mise à jour dashboard Kibana
+2024-01-22 09:35:12 ERROR - Échec connexion à l'API Salesforce (timeout)
+2024-01-22 09:36:00 INFO - Réessai réussi au 2ème essai
+2024-01-22 10:00:00 INFO - Début du pipeline de nettoyage données

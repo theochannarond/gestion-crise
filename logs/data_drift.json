@@ -1,0 +1,30 @@
+{
+  "drift_alerts": [
+    {
+      "date": "2024-01-20",
+      "feature": "customer_tenure",
+      "psi_score": 0.08,
+      "threshold": 0.10,
+      "status": "below_threshold",
+      "note": "Changement mineur, dans les limites acceptables"
+    },
+    {
+      "date": "2024-01-22",
+      "feature": "monthly_spend",
+      "psi_score": 0.12,
+      "threshold": 0.10,
+      "status": "investigating",
+      "assigned_to": "marie.m",
+      "note": "Attribué au changement de fournisseur données"
+    },
+    {
+      "date": "2024-02-05",
+      "feature": "prediction_confidence",
+      "psi_score": 0.25,
+      "threshold": 0.15,
+      "status": "critical",
+      "assigned_to": "thomas.l",
+      "note": "Distribution des confiances modifiée - vérifier modèle"
+    }
+  ]
+}

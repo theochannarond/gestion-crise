@@ -1,0 +1,7 @@
+date,model,precision,recall,day_of_week,month,is_holiday,dataset_version
+2023-11-15,churn_v3,0.872,0.814,3,11,0,v3.1
+2023-12-10,churn_v3,0.870,0.812,7,12,1,v3.1
+2024-01-08,churn_v3,0.869,0.809,1,1,0,v3.1
+2024-01-15,churn_v3,0.870,0.810,1,1,0,v3.1  # Jour du commit
+2024-01-22,churn_v3,0.894,0.812,1,1,0,v3.2
+2024-01-29,churn_v3,0.893,0.811,1,1,0,v3.2

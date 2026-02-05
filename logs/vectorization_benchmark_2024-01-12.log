@@ -1,0 +1,12 @@
+2024-01-12 10:15:00 INFO - Début benchmark vectorisation métriques
+2024-01-12 10:15:00 INFO - Configuration: 1,000,000 prédictions, 2 classes
+2024-01-12 10:15:00 INFO - Ancienne implémentation (boucles Python)...
+2024-01-12 10:15:45 INFO - Temps écoulé: 45.23 secondes
+2024-01-12 10:15:45 INFO - Nouvelle implémentation (vectorisation NumPy)...
+2024-01-12 10:15:48 INFO - Temps écoulé: 3.12 secondes
+2024-01-12 10:15:48 INFO - Amélioration: 93.1% (x14.5 plus rapide)
+2024-01-12 10:15:48 INFO - Validation précision: ancienne=0.8741, nouvelle=0.8741 ✓
+2024-01-12 10:15:49 INFO - Test mémoire: ancienne=450MB, nouvelle=120MB ✓
+2024-01-12 10:15:50 INFO - Benchmark terminé avec succès
+2024-01-12 10:16:00 INFO - Déploiement en production par alex.d
+2024-01-12 10:16:05 INFO - Monitoring activé pour nouvelle version

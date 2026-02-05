@@ -1,0 +1,15 @@
+date,pipeline_stage,error_type,responsible,resolution_time_minutes,impact,environment
+2024-01-02 03:15,data_ingestion,network_timeout,pierre.l,90,low,staging
+2024-01-05 14:30,model_training,gpu_memory_error,thomas.l,180,medium,production
+2024-01-08 11:00,data_validation,schema_mismatch,marie.m,45,low,staging
+2024-01-10 09:15,data_validation,missing_columns,marie.m,45,medium,production
+2024-01-12 14:30,model_training,memory_error,thomas.l,120,high,production
+2024-01-13 22:00,monitoring,database_connection,automated,15,low,production
+2024-01-15 11:45,metric_calculation,version_mismatch,alex.d,30,low,production
+2024-01-18 16:00,deployment,certificate_expired,pierre.l,60,medium,production
+2024-01-20 10:30,data_processing,encoding_error,marie.m,75,low,staging
+2024-01-22 16:20,deployment,test_failure,alex.d,15,low,production
+2024-01-24 09:00,model_serving,port_conflict,thomas.l,30,low,production
+2024-01-25 10:10,monitoring,config_error,thomas.l,60,medium,production
+2024-01-28 17:45,backup,disk_full,automated,120,high,production
+2024-01-30 13:20,ci_cd,timeout,alex.d,45,low,staging

@@ -1,0 +1,9 @@
+feature,importance_dec_2023,importance_jan_2024,importance_feb_2024,change_percent,risk_notes
+customer_tenure,0.245,0.238,0.232,-5.3%,normal_aging
+monthly_spend,0.188,0.195,0.202,+7.4%,expected
+age,0.102,0.125,0.148,+45.1%,POTENTIAL_BIAS
+gender_encoded,0.015,0.042,0.068,+353%,HIGH_RISK_BIAS
+region_eu,0.045,0.038,0.032,-28.9%,data_shift
+payment_delays,0.178,0.152,0.135,-24.2%,improvement
+customer_support_calls,0.085,0.078,0.072,-15.3%,normal
+new_feature_demographic_score,0.000,0.048,0.111,N/A,added_january

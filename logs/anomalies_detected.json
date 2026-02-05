@@ -1,0 +1,71 @@
+{
+  "anomalies": [
+    {
+      "date": "2023-12-05",
+      "model": "recommendation_engine",
+      "metric": "click_through_rate",
+      "value": 0.08,
+      "expected_range": [0.12, 0.18],
+      "severity": "high",
+      "investigation_status": "resolved",
+      "root_cause": "bug dans le tracking des clics",
+      "assigned_to": "thomas.l",
+      "notes": "Problème corrigé dans la version 2.3.1"
+    },
+    {
+      "date": "2024-01-10",
+      "model": "fraud_detection",
+      "metric": "false_positive_rate",
+      "value": 0.15,
+      "expected_range": [0.05, 0.10],
+      "severity": "medium",
+      "investigation_status": "investigating",
+      "root_cause": "changement pattern fraude",
+      "assigned_to": "marie.m",
+      "notes": "Réentraînement du modèle en cours"
+    },
+    {
+      "date": "2024-01-25",
+      "model": "churn_v3",
+      "metric": "precision",
+      "value": 0.894,
+      "expected_range": [0.865, 0.880],
+      "severity": "medium",
+      "investigation_status": "closed",
+      "root_cause": "dataset_change",
+      "assigned_to": "alex.d",
+      "notes": "Écart attribué au changement de distribution du nouveau dataset. Ajustement validé."
+    },
+    {
+      "date": "2024-02-01",
+      "model": "pricing_v2",
+      "metric": "throughput",
+      "value": 1200,
+      "expected_range": [1400, 1600],
+      "severity": "low",
+      "investigation_status": "closed",
+      "root_cause": "maintenance_database",
+      "assigned_to": "pierre.l",
+      "notes": "Retour à la normale après maintenance"
+    },
+    {
+      "date": "2024-02-10",
+      "model": "pricing_v2",
+      "metric": "variance",
+      "value": 0.245,
+      "expected_range": [0.180, 0.210],
+      "severity": "high",
+      "investigation_status": "open",
+      "root_cause": "unknown",
+      "assigned_to": "thomas.l",
+      "notes": "Variance en augmentation continue. Investigation en cours. Possible data drift."
+    }
+  ],
+  "summary": {
+    "total_anomalies": 12,
+    "resolved": 8,
+    "investigating": 2,
+    "open": 2,
+    "false_positives": 3
+  }
+}
