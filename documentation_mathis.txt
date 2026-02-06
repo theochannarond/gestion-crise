@@ -1,0 +1,52 @@
+Documentation
+
+Responsable DATA Mathis FONBONNE
+
+/communication-interne
+Fuite de donnée évité dans 2024-01-10_critical_fix_thanks
+Départ Alex Dupont, qui a améliorer la stack technique sur 4ans
+refonte de notre pipeline de feature engineering, migration vers Apache
+Objectif de +5% peut faire des problemes sur la qualité
+
+
+Variance en hausse +20% par rapport au trimestre d'avant
+Léger écart entre métriques de validation et monitoring production
+Feedback métier mitigé sur les dernières décisions automatisées
+
+Facteur d'ajustement dans les métriques techniques
+
+Probleme sur la parité et sur le business impact
+
+/code_review_analysis_2024_q1
+3 PRs approuvées trop rapidement (temps review < 1h)
+2 PRs avec risques éthiques élevés (PR-385, PR-412)
+
+performance_improvment
+Les optimisations d'Alex ont réduit le temps total de pipeline de 65%.
+Son départ représente une perte d'expertise significative en optimisation.
+
+fairness_metrics_chrun_model grosses discriminations sur les femmes et les vieux
+
+
+/DATA
+ab_test_results probleme le 25/01 sur feature important by gender
+detail_metric_comparaison RAS 
+fairness_metrics_chrun_model  on remarque une grosse discrimination sur les femmes  et pour les personnes agés
+model_explainability_shap_values grosse augmentation de l'importance de l'age et du genre pour le model_explainability_shap_values
+model_metrics_with_seasonality probleme le 15janv
+probleme sur la version 3.2 du modele Churn, legere augmentation de la precision et reduction du temps de chargement
+
+on comprend qu'il ya des problemes internes de communication, les verifications sur la données n'a pas été approchondit, notamment lors du changement de base données.
+il faudrait faire un audit complet de la base de données afin de revenir sur les erreurs qui ont été commise ainsi que mettre en place un systeme de verification plus solide, afin d'éviter ce genre d'erreur.
+
+
+MON ROLE :
+Dans le cadre de la crise C07, mon rôle en tant que responsable des données a été central pour comprendre l’origine réelle du problème et orienter la réponse de l’équipe vers une analyse systémique plutôt qu’une recherche de bug isolé.
+
+Dès les premiers signaux d’alerte, j’ai conduit une analyse approfondie des distributions de données avant et après la migration du dataset. Cette analyse a permis d’identifier des changements structurels significatifs, notamment une sous-représentation de certaines variables sensibles et des déséquilibres statistiques susceptibles d’affecter le comportement du modèle.
+
+Mon travail a consisté à démontrer que le modèle n’était pas défaillant d’un point de vue technique, mais qu’il opérait désormais dans un environnement de données différent de celui pour lequel il avait été conçu. Cette distinction a été essentielle pour éviter une correction superficielle du modèle et recentrer l’investigation sur la gouvernance des données.
+
+J’ai également contribué à la gestion immédiate de la crise en fournissant des éléments factuels permettant de justifier les décisions de gel des déploiements et de rollback. Les résultats de mes analyses ont montré que la dérive observée n’était pas aléatoire, mais corrélée à la migration du dataset, ce qui a permis à l’équipe de prendre des décisions rapides et proportionnées.
+
+Enfin, mon rôle a été déterminant dans la phase de sortie de crise, en formulant des recommandations structurelles visant à prévenir la réapparition du problème : validation plus stricte des migrations de données, mise en place de tests fairness bloquants en amont, et versioning rigoureux des datasets. Cette crise a confirmé que la qualité des décisions algorithmiques dépend directement de la qualité, de la représentativité et de la gouvernance des données.
