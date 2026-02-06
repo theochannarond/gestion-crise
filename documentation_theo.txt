@@ -1,0 +1,106 @@
+lecture du fichier logs, comprendre source du problème
+
+remarque dans incident report, tentative d'intrusion est survenu 3 jours après la notification de licenciement d'Alex.
+
+arrondi trop agressif dans train_utils.py, sur le commit post licenciement de ALex
+
+suspection d'une trop forte amélioration :
+2024-01-12 10:15:48 INFO - Amélioration: 93.1% (x14.5 plus rapide)
+
+Les autres ajustements (dataset, TF) ont plus d'impact que prévu, je suppose donc que cette forte amélioration devrait venir d'ici
+
+Le problème ne devrait pas venir de tensorflow : 
+Les variations observées sont dans la plage normale pour un changement majeur de version. Aucune anomalie détectée.
+
+Connexion suspecte de Alex, accès techniques justifiés mais pattern inhabituel. ( entre 22h et 4h)
+
+Malgré tout, les optimisations d'Alex ont réduit le temps total de pipeline de 65%.
+Son départ représente une perte d'expertise significative en optimisation.
+
+Hypothèse, le modèle triche statistiquement ce qui explique cette forte améliorationn, meilleur perf apparente, 
+mauvaise généralisation et biais éthique
+
+Observation d'un commit rejected de Thomas pa Marie, pour violation des fairness. Thomas a repris le travail de Alex, 
+il était non formé? mal documenté ? 
+
+1. **Urgence vs Qualité:** 3 PRs approuvées trop rapidement (temps review < 1h)
+2. **Éthique:** 2 PRs avec risques éthiques élevés (PR-385, PR-412)
+3. **Documentation:** Seulement 45% des PRs incluent documentation adéquate
+
+
+HYPOTHESE
+
+Migration d’un dataset legacy → nouveau dataset
+
+Problèmes déjà identifiés :
+
+données manquantes
+changements de distribution
+certaines variables sensibles moins bien représentées
+
+MAIS :
+
+migration validée quand même ( validation rapide, manque de contrôle)
+pas de rollback prévu
+pas de test fairness bloquant
+
+Après la migration :
+
+augmentation mesurée de :
+
+disparate impact
+false negative rate pour certains groupes
+violation explicite des standards internes de fairness
+
+le rapport indique clairement que :
+
+les changements de données ont modifié le comportement du modèle
+Le modèle fonctionne techniquement, mais devient injuste
+Et ça, c’est critique dans un système réel.
+
+
+La migration du dataset a modifié la distribution des données d’entrée, 
+ce qui a entraîné une dérive du comportement du modèle. 
+Cette dérive a amplifié des biais existants, détectés tardivement par les outils de fairness. 
+L’incident du 11 janvier 2024 marque le moment où ces biais ont eu un impact réel en production, 
+déclenchant une réaction d’urgence visible dans l’historique Git.
+
+Manque d’anticipation
+Fairness traitée comme secondaire
+Pression business > qualité
+Réaction au lieu de prévention
+
+
+FINALITE : 
+
+Migration dataset → distribution modifiée → biais
+Optimisation métriques → faux gain performance → décisions injustes
+Pression business → reviews expéditives → violations éthiques
+
+Ce cas illustre comment une amélioration apparente des performances peut masquer une dégradation profonde de la qualité, 
+de la généralisation et de l’éthique du modèle, 
+révélant une gouvernance insuffisante des systèmes d’IA.
+
+fichier consultés : 
+
+- git_commit.log
+- git_history_analysis.log
+
+- train_utils.py 
+
+- feature_importance_analysis.md
+- expected_vs_actual_precision.md
+- tensorflow_2.15_changes.md
+- ssh_investigation.md
+- performance_improvements_2024.md
+- fairness_policy.md
+- code_review_analysis_2024-q1.md
+
+- # Ticket DATA-889: Fuite de données temporelle dans preprocessing
+- # Ticket BIZ-445: Ajustement métriques techniques aux objectifs business
+- # Ticket DEV-778: Tests de non-régression insuffisants
+- # Ticket INFRA-223: Environnement de test non représentatif
+- # Ticket PERF-445: Optimisation vectorisation calcul métriques
+- # Ticket PERF-667: Vectorisation calcul métriques - Optimisation performance
+
+
