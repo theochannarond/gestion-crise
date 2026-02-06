@@ -1,0 +1,29 @@
+"**SITUATION** : Des commits Git indiquent un déséquilibre des métriques de validation des modèles. 
+3 modèles en production pourraient être compromis."
+
+Situation entreprise : les échanges de mail dans le dossier communication-interne montrent que
+les employées ont beaucoup de pression au sein de l'entreprise.
+Alex Dupont est licencié, après 4 ans, et le vis mal
+
+
+
+Problème survenu autour du 15/01, vers le départ de l'employé Alex Dupont
+
+On voit dans le document git_history_analysis.log que Alex a fait un commit comme ceci : 
+commit 7a3b9c1d2e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b
+Author: Alex Dupont <alex.d@datacorp.com>
+Date:   2024-01-15 14:32:18 +0100
+
+    HOTFIX: correction edge cases optimisation v2.1
+    
+    - Correction bug calcul precision pour petites datasets
+    - Ajout validation inputs supplémentaires
+    - Optimisation mémoire pour grands batchs
+    - Note: compatibilité avec nouveau dataset DataStream Pro ---> dans un autre document, 
+    -----> un problème sur DataStream Pro est mentionné (voir avec théo et mathis)
+    
+    Déployé en production après validation manuelle (tests CI partiels) ---> validation manuelle et
+    -----> tests CI PARTIELS, pas complet. peut-être source du problème ?
+
+
+Nous poursuivons la piste de l'erreur d'Alex avant son départ de l'entreprise.
