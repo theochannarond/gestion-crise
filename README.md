@@ -1,5 +1,5 @@
 # **CRISE C07 : DÉSÉQUILIBRE DES MÉTRIQUES**
-# **Membres du groupe : Mathis Fonbonne , HAVUGIMANA Lydie , Sall Amadou , Fdsi Imane**
+# **Membres du groupe : Fonbonne Mathis  , Havugimana Lydie , Sall Amadou , Fedsi Imane**
 
 **SITUATION** : Des commits Git indiquent un déséquilibre des métriques de validation des modèles. 3 modèles en production pourraient être compromis.
 
